@@ -9,11 +9,11 @@
     "preview": "vite preview",
     "prettier": "prettier . --write",
     "lint": "eslint . --fix",
+    "format": "npx prettier . --write && npx eslint --fix",
     "prepare": "husky"
   },
   "lint-staged": {
-    "prettier": "prettier . --write",
-    "lint": "eslint . --fix"
+    "*.js": "npm run format"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
