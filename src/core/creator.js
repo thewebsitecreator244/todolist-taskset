@@ -12,12 +12,18 @@ const buttonParams = {
 class Creator {
   constructor(params) {
     this.element = this.createElement(params);
+    this.setClassList(params);
   }
 
   createElement(params) {
     if (params.tagName) {
       const currentElement = document.createElement(params.tagName);
       return currentElement;
+    }
+  }
+  setClassList(params) {
+    if (this.element && params.classList && params.classList.length > 0) {
+      this.element.classList.add(...params.classList);
     }
   }
 
