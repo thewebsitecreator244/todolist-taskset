@@ -1,2 +1,2 @@
 import "./style.css";
-import "./core/creator.js";
+import "./controller/controller.js";

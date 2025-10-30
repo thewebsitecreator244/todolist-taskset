@@ -1,48 +1,43 @@
-//the creator class should have these parameters: tagName,classList,text,object with attributes//
-//the creator must create an element from these parameters//
-const buttonParams = {
-  tagName: "button",
-  classList: ["bg-red-500", "h-5"],
-  text: "Click me im an experimental button",
-  attributes: {
-    id: "button",
-    "data-action": "click",
-  },
-};
-class Creator {
-  constructor(params) {
-    this.element = this.createElement(params);
-    this.setClassList(params);
-    this.setAttributesToElement(params);
-  }
+// class Creator {
+//   constructor(params) {
+//     this.element = this.createElement(params);
+//     this.setClassList(params);
+//     this.setAttributesToElement(params);
+//     this.setText(params)
+//   }
 
-  createElement(params) {
-    if (params.tagName) {
-      const currentElement = document.createElement(params.tagName);
-      return currentElement;
-    }
-  }
-  setClassList(params) {
-    if (this.element && params.classList && params.classList.length > 0) {
-      this.element.classList.add(...params.classList);
-    }
-  }
+//   createElement(params) {
+//     if (params.tagName) {
+//       const currentElement = document.createElement(params.tagName);
+//       return currentElement;
+//     }
+//   }
 
-  setAttributesToElement(params) {
-    if (this.element && params.attributes) {
-      for (let attribute in params.attributes) {
-        const attibuteKey = attribute;
-        const attributeValue = params.attributes[attribute];
-        this.element.setAttribute(attibuteKey, attributeValue);
-      }
-    }
-  }
+//   setClassList(params) {
+//     if (this.element && params.classList && params.classList.length > 0) {
+//       this.element.classList.add(...params.classList);
+//     }
+//   }
 
-  getTag() {
-    if (this.element) {
-      return this.element;
-    }
-  }
-}
-let button = new Creator(buttonParams).getTag();
-console.log(button);
+//   setAttributesToElement(params) {
+//     if (this.element && params.attributes) {
+//       for (let attribute in params.attributes) {
+//         const attibuteKey = attribute;
+//         const attributeValue = params.attributes[attribute];
+//         this.element.setAttribute(attibuteKey, attributeValue);
+//       }
+//     }
+//   }
+
+//   setText(params){
+//     if (this.element && params.text){
+//       this.element.textContent = params.text
+//     }
+//   }
+
+//   getTag() {
+//     if (this.element) {
+//       return this.element;
+//     }
+//   }
+// }
