@@ -1,5 +1,11 @@
+import { Creator } from "../../core/creator";
+
+const headerParams = {
+  tagName: "header",
+};
+
 export class HeaderView {
   constructor() {
-    console.log("EYE ÉME HEDER");
+    this.header = new Creator(headerParams);
   }
 }
