@@ -1,12 +1,14 @@
 import { HeaderView } from "./header-view/header-view";
+import { MainView } from "./element-control/element-control-view";
 export class View {
   constructor() {
     this.app = document.querySelector("#app");
     this.headerView = new HeaderView();
+    this.main = new MainView();
     this.initialView();
   }
 
   initialView() {
-    this.app.prepend(this.headerView.header.getTag());
+    this.app.append(this.headerView.header.getTag(), this.main.main.getTag());
   }
 }
