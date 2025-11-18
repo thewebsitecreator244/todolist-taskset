@@ -1,11 +1,18 @@
 import { Creator } from "../../core/creator";
-import { headerParams, nightModeButtonParams } from "./header-params";
+import {
+  headerParams,
+  nightModeButtonParams,
+  logotypeParams,
+} from "./header-params";
 
 export class HeaderView {
   constructor() {
     this.header = new Creator(headerParams);
     this.nightModeBtn = new Creator(nightModeButtonParams);
-    this.header.getTag().append(this.nightModeBtn.getTag());
+    this.logotype = new Creator(logotypeParams);
+    this.header
+      .getTag()
+      .append(this.logotype.getTag(), this.nightModeBtn.getTag());
     this.setEventListener();
   }
 

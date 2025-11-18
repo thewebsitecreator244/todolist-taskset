@@ -9,6 +9,9 @@ const btnParams = {
     "dark:border-white",
     "dark:text-white",
     "font-bold",
+    "hover:cursor-pointer",
+    "hover:opacity-60",
+    "duration-300",
   ],
   text: "Add note +",
 };
