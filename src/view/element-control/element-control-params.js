@@ -1,5 +1,15 @@
 const btnParams = {
   tagName: "button",
-  classList: ["bg-black", "rounded-xl", "w-5", "h-5"],
+  classList: [
+    "rounded-4xl",
+    "border-5",
+    "border-black",
+    "py-2",
+    "px-5",
+    "dark:border-white",
+    "dark:text-white",
+    "font-bold",
+  ],
+  text: "Add note +",
 };
 export { btnParams };

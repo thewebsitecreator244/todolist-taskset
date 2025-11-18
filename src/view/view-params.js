@@ -1,5 +1,5 @@
 const mainParams = {
   tagName: "main",
-  classList: [],
+  classList: ["flex", "justify-center", "py-5"],
 };
 export { mainParams };
