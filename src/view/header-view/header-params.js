@@ -4,10 +4,13 @@ const headerParams = {
     "border-5",
     "border-(var:--color-nightmode)",
     "border-dashed",
-    "p-5",
+    "py-1",
+    "px-2",
     "flex",
     "justify-between",
     "dark:border-[#ffffff]",
+    "items-center",
+    "md:p-3",
   ],
 };
 const nightModeButtonParams = {
@@ -33,13 +36,14 @@ const logotypeParams = {
   tagName: "div",
   classList: [
     "bg-[url(/logo.svg)]",
-    "max-w-80",
+    "max-w-30",
     "w-full",
     "bg-contain",
     "bg-center",
     "bg-no-repeat",
     "h-20",
     "dark:bg-[url(/logo-night.svg)]",
+    "md:max-w-50",
   ],
 };
 
