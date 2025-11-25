@@ -14,5 +14,6 @@ const btnParams = {
     "duration-300",
   ],
   text: "Add note +",
+  attributes: { id: "noteBtn" },
 };
 export { btnParams };
