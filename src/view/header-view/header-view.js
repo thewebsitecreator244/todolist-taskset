@@ -13,24 +13,24 @@ export class HeaderView {
     this.header
       .getTag()
       .append(this.logotype.getTag(), this.nightModeBtn.getTag());
-    this.setEventListener();
+    // this.setEventListener();
   }
 
-  eventHandler(event) {
-    const isNightModeBtn = event.target.closest("#nightModeBtn");
-    if (isNightModeBtn) {
-      this.nightMode();
-    }
-  }
+  // eventHandler(event) {
+  //   const isNightModeBtn = event.target.closest("#nightModeBtn");
+  //   if (isNightModeBtn) {
+  //     this.nightMode();
+  //   }
+  // }
 
   nightMode() {
     const htmlWrapper = document.querySelector("html");
     htmlWrapper.classList.toggle("dark");
   }
 
-  setEventListener() {
-    this.header
-      .getTag()
-      .addEventListener("click", (event) => this.eventHandler(event));
-  }
+  // setEventListener() {
+  //   this.header
+  //     .getTag()
+  //     .addEventListener("click", (event) => this.eventHandler(event));
+  // }
 }
