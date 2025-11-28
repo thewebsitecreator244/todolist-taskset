@@ -1,4 +1,3 @@
-import { FormView } from "../view/form/form-view";
 import { View } from "../view/view";
 
 class Controller {
@@ -26,8 +25,8 @@ class Controller {
 
     if (isButton) {
       const main = this.view.main.main.getTag();
-      const form = new FormView();
-      main.append(form.form.getTag(), form.fade.getTag());
+      const form = this.view.formView.buildForm();
+      main.append(form.form, form.fade);
     }
   }
 }
