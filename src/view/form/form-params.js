@@ -1,30 +1,41 @@
 const formParams = {
   tagName: "form",
-  classList: [],
+  classList: [
+    "bg-white",
+    "z-3",
+    "fixed",
+    "top-1/2",
+    "left-1/2",
+    "-translate-1/2",
+    "p-7",
+    "rounded-2xl",
+    "max-w-130",
+    "w-full",
+  ],
   attributes: {},
 };
 const inputWrapperParams = {
   tagName: "div",
-  classList: [],
+  classList: ["flex", "gap-3.5", "border-b-3", "border-black"],
   attributes: {},
   text: "",
 };
 const textInputParams = {
   tagName: "input",
-  classList: [],
-  attributes: { id: "NoteName" },
+  classList: ["max-w-190", "w-full"],
+  attributes: { id: "NoteName", placeholder: "note title" },
   text: "",
 };
 const favBtnParams = {
   tagName: "button",
-  classList: [],
+  classList: ["bg-[url(/fav.svg)]", "h-5", "w-5", "bg-center", "bg-cover"],
   attributes: { type: "button" },
   text: "",
 };
 const textAreaParams = {
   tagName: "textarea",
-  classList: [],
-  attributes: { id: "NoteDesc" },
+  classList: ["max-w-190", "w-full", "max-h-100"],
+  attributes: { id: "NoteDesc", placeholder: "note description" },
   text: "",
 };
 const postWrapperParams = {
@@ -54,6 +65,7 @@ const fadeParams = {
     "fixed",
     "inset-0",
     "backdrop-blur-xs",
+    "z-2",
   ],
   attributes: { id: "fade" },
 };
