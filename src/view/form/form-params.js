@@ -16,45 +16,77 @@ const formParams = {
 };
 const inputWrapperParams = {
   tagName: "div",
-  classList: ["flex", "gap-3.5", "border-b-3", "border-black"],
+  classList: ["flex", "gap-3.5", "border-b-3", "border-black", "pb-2"],
   attributes: {},
   text: "",
 };
 const textInputParams = {
   tagName: "input",
-  classList: ["max-w-190", "w-full"],
-  attributes: { id: "NoteName", placeholder: "note title" },
+  classList: ["max-w-190", "w-full", "outline-none", "focus:shadow-xl"],
+  attributes: { id: "NoteName", placeholder: "Note title" },
   text: "",
 };
 const favBtnParams = {
   tagName: "button",
-  classList: ["bg-[url(/fav.svg)]", "h-5", "w-5", "bg-center", "bg-cover"],
+  classList: [
+    "bg-[url(/fav.svg)]",
+    "h-5",
+    "w-5",
+    "bg-center",
+    "bg-cover",
+    "hover:cursor-pointer",
+  ],
   attributes: { type: "button" },
   text: "",
 };
 const textAreaParams = {
   tagName: "textarea",
-  classList: ["max-w-190", "w-full", "max-h-100"],
-  attributes: { id: "NoteDesc", placeholder: "note description" },
+  classList: [
+    "max-w-190",
+    "w-full",
+    "max-h-50",
+    "min-h-10",
+    "outline-none",
+    "focus:shadow-xl",
+  ],
+  attributes: { id: "NoteDesc", placeholder: "Note description" },
   text: "",
 };
 const postWrapperParams = {
   tagName: "div",
-  classList: [],
+  classList: ["flex", "items-center", "gap-4"],
   attributes: {},
   text: "",
 };
 const submitBtnParams = {
   tagName: "button",
-  classList: [],
+  classList: [
+    "rounded-3xl",
+    "py-1",
+    "bg-lime-500",
+    "px-4",
+    "hover:cursor-pointer",
+    "hover:ring-lime-200",
+    "duration-300",
+    "hover:ring-5",
+  ],
   attributes: {},
-  text: "",
+  text: "Submit",
 };
 const cancelBtnParams = {
   tagName: "button",
-  classList: [],
+  classList: [
+    "rounded-3xl",
+    "bg-red-500",
+    "py-1",
+    "px-4",
+    "hover:cursor-pointer",
+    "hover:ring-red-200",
+    "duration-300",
+    "hover:ring-5",
+  ],
   attributes: { type: "reset" },
-  text: "",
+  text: "Cancel",
 };
 const fadeParams = {
   tagName: "div",
@@ -77,6 +109,6 @@ export {
   favBtnParams,
   textAreaParams,
   postWrapperParams,
-  cancelBtnParams,
   submitBtnParams,
+  cancelBtnParams,
 };

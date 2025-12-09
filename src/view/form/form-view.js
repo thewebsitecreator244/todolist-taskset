@@ -21,12 +21,12 @@ export class FormView {
     const favBtn = new Creator(favBtnParams).getTag();
     const textArea = new Creator(textAreaParams).getTag();
     const postWrapper = new Creator(postWrapperParams).getTag();
-    const cancelBtn = new Creator(cancelBtnParams).getTag();
     const submitBtn = new Creator(submitBtnParams).getTag();
+    const cancelBtn = new Creator(cancelBtnParams).getTag();
 
     form.append(inputWrapper, textArea, postWrapper);
     inputWrapper.append(textInput, favBtn);
-    postWrapper.append(cancelBtn, submitBtn);
+    postWrapper.append(submitBtn, cancelBtn);
     return { form, fade };
   }
 }
