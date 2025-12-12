@@ -1,7 +1,9 @@
+import { Model } from "../model/model";
 import { View } from "../view/view";
 
 class Controller {
   constructor() {
+    this.model = new Model();
     this.view = new View();
     this.setListeners();
   }
