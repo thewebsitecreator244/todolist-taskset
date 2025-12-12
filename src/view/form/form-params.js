@@ -26,17 +26,20 @@ const textInputParams = {
   attributes: { id: "NoteName", placeholder: "Note title" },
   text: "",
 };
+const FavWrapperParams = {
+  tagName: "label",
+  classList: ["favWrapper"],
+  attributes: {},
+};
+const FakeParams = {
+  tagName: "div",
+  classList: ["fake"],
+  attributes: {},
+};
 const favBtnParams = {
-  tagName: "button",
-  classList: [
-    "bg-[url(/fav.svg)]",
-    "h-5",
-    "w-5",
-    "bg-center",
-    "bg-cover",
-    "hover:cursor-pointer",
-  ],
-  attributes: { type: "button" },
+  tagName: "input",
+  classList: ["favBtn"],
+  attributes: { type: "checkbox" },
   text: "",
 };
 const textAreaParams = {
@@ -111,4 +114,6 @@ export {
   postWrapperParams,
   submitBtnParams,
   cancelBtnParams,
+  FavWrapperParams,
+  FakeParams,
 };

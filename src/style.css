@@ -6,3 +6,29 @@
   --color-nightmode: #123249;
   --white: #ffffff;
 }
+.favWrapper{
+
+}
+.fake{
+  width: 20px;
+  height: 20px;
+  background-image: url("/fav.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+
+.favBtn:checked+.fake{
+  background-image: url("/fav-checked.svg");
+}
+.favBtn{
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index:-3;
+}
