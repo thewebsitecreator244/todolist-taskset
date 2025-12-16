@@ -15,6 +15,7 @@ class Controller {
     this.view.headerView.header
       .getTag()
       .addEventListener("click", (event) => this.eventHandler(event));
+    console.log(this.view.formView.form);
   }
 
   eventHandler(event) {
@@ -28,7 +29,7 @@ class Controller {
     if (isButton) {
       const main = this.view.main.main.getTag();
       const form = this.view.formView.buildForm();
-      main.append(form.form, form.fade);
+      main.append(form.FormElement, form.FadeElement);
     }
   }
 }

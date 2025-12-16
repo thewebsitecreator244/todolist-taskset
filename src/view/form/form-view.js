@@ -14,7 +14,10 @@ import {
 import { Creator } from "../../core/creator";
 
 export class FormView {
-  constructor() {}
+  constructor() {
+    this.formElement = null;
+    this.fadeElement = null;
+  }
   buildForm() {
     const fade = new Creator(fadeParams).getTag();
     const form = new Creator(formParams).getTag();
@@ -32,6 +35,11 @@ export class FormView {
     inputWrapper.append(textInput, FavWrapper);
     FavWrapper.append(favBtn, FakeCheckBox);
     postWrapper.append(submitBtn, cancelBtn);
-    return { form, fade };
+    //export the creation of components here//
+    this.formElement = form;
+    this.fadeElement = fade;
+    const FormElement = this.formElement;
+    const FadeElement = this.fadeElement;
+    return { FormElement, FadeElement };
   }
 }

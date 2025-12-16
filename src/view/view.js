@@ -7,7 +7,6 @@ export class View {
     this.headerView = new HeaderView();
     this.main = new MainView();
     this.formView = new FormView();
-    console.log(this.formView);
 
     this.initialView();
   }
