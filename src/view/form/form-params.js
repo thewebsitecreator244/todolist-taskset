@@ -23,7 +23,7 @@ const inputWrapperParams = {
 const textInputParams = {
   tagName: "input",
   classList: ["max-w-190", "w-full", "outline-none", "focus:shadow-xl"],
-  attributes: { id: "NoteName", placeholder: "Note title" },
+  attributes: { name: "Title", placeholder: "Note title" },
   text: "",
 };
 const FavWrapperParams = {
@@ -39,7 +39,7 @@ const FakeParams = {
 const favBtnParams = {
   tagName: "input",
   classList: ["favBtn"],
-  attributes: { type: "checkbox" },
+  attributes: { type: "checkbox", name: "favBtn" },
   text: "",
 };
 const textAreaParams = {
@@ -52,7 +52,7 @@ const textAreaParams = {
     "outline-none",
     "focus:shadow-xl",
   ],
-  attributes: { id: "NoteDesc", placeholder: "Note description" },
+  attributes: { name: "textArea", placeholder: "Note description" },
   text: "",
 };
 const postWrapperParams = {

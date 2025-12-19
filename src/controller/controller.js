@@ -15,7 +15,6 @@ class Controller {
     this.view.headerView.header
       .getTag()
       .addEventListener("click", (event) => this.eventHandler(event));
-    console.log(this.view.formView.form);
   }
 
   eventHandler(event) {
@@ -30,6 +29,10 @@ class Controller {
       const main = this.view.main.main.getTag();
       const form = this.view.formView.buildForm();
       main.append(form.FormElement, form.FadeElement);
+      form.FormElement.addEventListener("submit", (event) => {
+        event.preventDefault();
+        this.model.checkFormData(event.target);
+      });
     }
   }
 }
