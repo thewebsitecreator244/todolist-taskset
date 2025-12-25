@@ -32,6 +32,7 @@ class Controller {
       form.FormElement.addEventListener("submit", (event) => {
         event.preventDefault();
         this.model.checkFormData(event.target);
+        this.view.formView.delete();
       });
     }
   }

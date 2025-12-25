@@ -42,4 +42,8 @@ export class FormView {
     const FadeElement = this.fadeElement;
     return { FormElement, FadeElement };
   }
+  delete() {
+    this.formElement.remove();
+    this.fadeElement.remove();
+  }
 }
