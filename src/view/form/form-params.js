@@ -40,7 +40,6 @@ const favBtnParams = {
   tagName: "input",
   classList: ["favBtn"],
   attributes: { type: "checkbox", name: "favBtn" },
-  text: "",
 };
 const textAreaParams = {
   tagName: "textarea",

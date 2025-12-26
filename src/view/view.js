@@ -12,6 +12,6 @@ export class View {
   }
 
   initialView() {
-    this.app.append(this.headerView.header.getTag(), this.main.main.getTag());
+    this.app.append(this.headerView.header.getTag(), this.main.main);
   }
 }

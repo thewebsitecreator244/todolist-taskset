@@ -6,10 +6,11 @@ class Controller {
     this.model = new Model();
     this.view = new View();
     this.setListeners();
+    this.renderNotes();
   }
 
   setListeners() {
-    const main = this.view.main.main.getTag();
+    const main = this.view.main.main;
     main.addEventListener("click", (event) => this.eventHandler(event));
 
     this.view.headerView.header
@@ -26,7 +27,7 @@ class Controller {
     }
 
     if (isButton) {
-      const main = this.view.main.main.getTag();
+      const main = this.view.main.main;
       const form = this.view.formView.buildForm();
       main.append(form.FormElement, form.FadeElement);
       form.FormElement.addEventListener("submit", (event) => {
@@ -35,6 +36,10 @@ class Controller {
         this.view.formView.delete();
       });
     }
+  }
+  renderNotes() {
+    this.view.main.noteList.fillLoop(this.model.structure.normal);
+    this.view.main.noteList.fillLoop(this.model.structure.favorite);
   }
 }
 
