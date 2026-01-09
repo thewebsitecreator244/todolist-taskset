@@ -19,28 +19,28 @@ export class NoteListView {
     this.list = new Creator(noteListParams);
   }
   fillLoop(arrayNotes) {
-    const li = new Creator(liParams).getTag();
-    const noteContainer = new Creator(noteContainerParams).getTag();
-    const noteWrapper = new Creator(noteWrapperParams).getTag();
-    const btnWrapper = new Creator(btnWrapperParams).getTag();
-    const changeBtn = new Creator(changeBtnParams).getTag();
-    const deleteBtn = new Creator(deleteBtnParams).getTag();
-    const favWrapper = new Creator(FavWrapperParams).getTag();
-    const fake = new Creator(FakeParams).getTag();
-    const favBtn = new Creator(favBtnParams).getTag();
-
     arrayNotes.forEach((note) => {
+      const li = new Creator(liParams).getTag();
+      const noteContainer = new Creator(noteContainerParams).getTag();
+      const noteWrapper = new Creator(noteWrapperParams).getTag();
+      const btnWrapper = new Creator(btnWrapperParams).getTag();
+      const changeBtn = new Creator(changeBtnParams).getTag();
+      const deleteBtn = new Creator(deleteBtnParams).getTag();
+      const favWrapper = new Creator(FavWrapperParams).getTag();
+      const fake = new Creator(FakeParams).getTag();
+      const favBtn = new Creator(favBtnParams).getTag();
       noteNameParams.text = note.title;
       noteTextParams.text = note.textArea;
-      const noteName = new Creator(noteNameParams);
-      const noteText = new Creator(noteTextParams);
+      const noteName = new Creator(noteNameParams).getTag();
+      const noteText = new Creator(noteTextParams).getTag();
 
       this.list.getTag().append(li);
-      li.append(noteContainer, noteText);
+      li.append(noteContainer);
       noteContainer.append(noteWrapper);
       noteWrapper.append(noteName, btnWrapper);
       btnWrapper.append(changeBtn, deleteBtn, favWrapper);
-      favWrapper.append(fake, favBtn);
+      favWrapper.append(favBtn, fake);
+      noteContainer.append(noteText);
     });
   }
 }

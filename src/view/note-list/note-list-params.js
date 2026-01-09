@@ -1,32 +1,48 @@
 const noteListParams = {
   tagName: "ul",
-  classList: [],
+  classList: [
+    "max-w-lg",
+    "w-full",
+    "flex",
+    "gap-2",
+    "flex-col",
+    "items-center",
+  ],
   attributes: {},
 };
 const liParams = {
   tagName: "li",
-  classList: [],
+  classList: ["max-w-lg", "w-full"],
   attributes: {},
 };
 const noteContainerParams = {
   tagName: "div",
-  classList: [],
+  classList: [
+    "flex",
+    "border-3",
+    "border-black",
+    "p-2",
+    "w-full",
+    "flex-col",
+    "gap-1",
+    "dark:border-white",
+  ],
   attributes: {},
 };
 const noteWrapperParams = {
   tagName: "div",
-  classList: [],
+  classList: ["flex", "gap-2", "items-center"],
   attributes: {},
 };
 const noteNameParams = {
   tagName: "h3",
-  classList: [],
+  classList: ["font-medium", "dark:text-white"],
   attributes: {},
   text: "",
 };
 const btnWrapperParams = {
   tagName: "div",
-  classList: [],
+  classList: ["flex"],
   attributes: {},
 };
 const changeBtnParams = {
@@ -57,7 +73,7 @@ const favBtnParams = {
 
 const noteTextParams = {
   tagName: "p",
-  classList: [],
+  classList: ["text-gray-500"],
   attributes: {},
   text: "",
 };

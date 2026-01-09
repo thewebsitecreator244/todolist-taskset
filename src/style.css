@@ -17,6 +17,9 @@
   background-position: center;
   cursor: pointer;
 }
+.dark .fake{
+  background-image: url("/fav-dark.svg");
+}
 
 .favBtn:checked + .fake {
   background-image: url("/fav-checked.svg");

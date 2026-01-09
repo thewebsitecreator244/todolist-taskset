@@ -12,6 +12,7 @@ const btnParams = {
     "hover:cursor-pointer",
     "hover:opacity-60",
     "duration-300",
+    "max-w-xs",
   ],
   text: "Add note +",
   attributes: { id: "noteBtn" },
