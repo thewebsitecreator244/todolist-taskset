@@ -17,7 +17,7 @@
   background-position: center;
   cursor: pointer;
 }
-.dark .fake{
+.dark .fake {
   background-image: url("/fav-dark.svg");
 }
 
@@ -33,3 +33,28 @@
   left: 0;
   z-index: -3;
 }
+.changeBtn{
+  width: 20px;
+  height: 20px;
+  background-image: url("/edit.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+.dark .changeBtn{
+  background-image: url("/edit-dark.svg");
+}
+.deleteBtn{
+  width: 20px;
+  height: 20px;
+  background-image: url("/delete.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+.dark .deleteBtn{
+  background-image: url("/delete-dark.svg");
+}
+

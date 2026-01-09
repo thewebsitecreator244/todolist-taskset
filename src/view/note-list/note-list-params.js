@@ -47,12 +47,12 @@ const btnWrapperParams = {
 };
 const changeBtnParams = {
   tagName: "button",
-  classList: [],
+  classList: ["changeBtn"],
   attributes: { type: "button" },
 };
 const deleteBtnParams = {
   tagName: "button",
-  classList: [],
+  classList: ["deleteBtn"],
   attributes: { type: "button" },
 };
 const FavWrapperParams = {
