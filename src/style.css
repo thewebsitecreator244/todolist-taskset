@@ -2,7 +2,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-pelenepikos-100: #d65076;
+
   --color-nightmode: #123249;
   --white: #ffffff;
 }
@@ -33,7 +33,7 @@
   left: 0;
   z-index: -3;
 }
-.changeBtn{
+.changeBtn {
   width: 20px;
   height: 20px;
   background-image: url("/edit.svg");
@@ -42,10 +42,10 @@
   background-position: center;
   cursor: pointer;
 }
-.dark .changeBtn{
+.dark .changeBtn {
   background-image: url("/edit-dark.svg");
 }
-.deleteBtn{
+.deleteBtn {
   width: 20px;
   height: 20px;
   background-image: url("/delete.svg");
@@ -54,7 +54,6 @@
   background-position: center;
   cursor: pointer;
 }
-.dark .deleteBtn{
+.dark .deleteBtn {
   background-image: url("/delete-dark.svg");
 }
-
