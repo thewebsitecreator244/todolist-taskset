@@ -87,7 +87,7 @@ const cancelBtnParams = {
     "duration-300",
     "hover:ring-5",
   ],
-  attributes: { type: "reset" },
+  attributes: { type: "reset", id: "cancelBtn" },
   text: "Cancel",
 };
 const fadeParams = {

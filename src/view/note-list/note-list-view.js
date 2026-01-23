@@ -43,4 +43,7 @@ export class NoteListView {
       noteContainer.append(noteText);
     });
   }
+  deleteOld() {
+    this.list.getTag().innerHTML = "";
+  }
 }

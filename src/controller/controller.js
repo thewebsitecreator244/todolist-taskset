@@ -34,10 +34,18 @@ class Controller {
         event.preventDefault();
         this.model.checkFormData(event.target);
         this.view.formView.delete();
+        this.renderNotes();
+      });
+      form.FormElement.addEventListener("click", (event) => {
+        const isCancel = event.target.closest("#cancelBtn");
+        if (isCancel) {
+          this.view.formView.delete();
+        }
       });
     }
   }
   renderNotes() {
+    this.view.main.noteList.deleteOld();
     this.view.main.noteList.fillLoop(this.model.structure.normal);
     this.view.main.noteList.fillLoop(this.model.structure.favorite);
   }
