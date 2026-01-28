@@ -34,4 +34,8 @@ export class Model {
     }
     this.addData(this.key, this.structure);
   }
+
+  // deleteNote(NoteIndex) {
+
+  // }
 }
