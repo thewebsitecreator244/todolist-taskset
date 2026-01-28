@@ -35,7 +35,8 @@ export class Model {
     this.addData(this.key, this.structure);
   }
 
-  // deleteNote(NoteIndex) {
-
-  // }
+  deleteNote(listName, index) {
+    this.structure[listName].pop(index);
+    this.addData(this.key, this.structure);
+  }
 }

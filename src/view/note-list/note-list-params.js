@@ -53,7 +53,7 @@ const changeBtnParams = {
 const deleteBtnParams = {
   tagName: "button",
   classList: ["deleteBtn"],
-  attributes: { type: "button" },
+  attributes: { type: "button", "data-delete": "" },
 };
 const FavWrapperParams = {
   tagName: "label",

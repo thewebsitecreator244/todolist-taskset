@@ -21,6 +21,16 @@ class Controller {
   eventHandler(event) {
     const isNightModeBtn = event.target.closest("#nightModeBtn");
     const isButton = event.target.closest("#noteBtn");
+    const isDelete = event.target.closest("[data-delete]");
+
+    if (isDelete) {
+      const noteToDelete = isDelete.closest("[data-index]");
+      const noteData = noteToDelete.getAttribute("data-index").split("-");
+      const listName = noteData[0];
+      const index = noteData[1];
+      this.model.deleteNote(listName, index);
+      this.renderNotes();
+    }
 
     if (isNightModeBtn) {
       this.view.headerView.nightMode();
