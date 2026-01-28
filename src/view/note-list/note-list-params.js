@@ -13,7 +13,7 @@ const noteListParams = {
 const liParams = {
   tagName: "li",
   classList: ["max-w-lg", "w-full"],
-  attributes: {},
+  attributes: { "data-index": "" },
 };
 const noteContainerParams = {
   tagName: "div",

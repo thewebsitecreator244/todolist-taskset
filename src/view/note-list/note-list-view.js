@@ -19,7 +19,13 @@ export class NoteListView {
     this.list = new Creator(noteListParams);
   }
   fillLoop(arrayNotes) {
-    arrayNotes.forEach((note) => {
+    arrayNotes.forEach((note, index) => {
+      if (note.favBtn) {
+        liParams.attributes["data-index"] = `favorite${index}`;
+      } else {
+        liParams.attributes["data-index"] = `normal${index}`;
+      }
+
       const li = new Creator(liParams).getTag();
       const noteContainer = new Creator(noteContainerParams).getTag();
       const noteWrapper = new Creator(noteWrapperParams).getTag();
