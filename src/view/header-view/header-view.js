@@ -4,6 +4,7 @@ import {
   nightModeButtonParams,
   logotypeParams,
   searchNoteParams,
+  functionalWrapperParams,
 } from "./header-params";
 
 export class HeaderView {
@@ -12,14 +13,13 @@ export class HeaderView {
     this.nightModeBtn = new Creator(nightModeButtonParams);
     this.logotype = new Creator(logotypeParams);
     this.SearchNote = new Creator(searchNoteParams);
+    this.functionalWrapper = new Creator(functionalWrapperParams).getTag();
 
-    this.header
-      .getTag()
-      .append(
-        this.logotype.getTag(),
-        this.nightModeBtn.getTag(),
-        this.SearchNote.getTag(),
-      );
+    this.header.getTag().append(this.logotype.getTag(), this.functionalWrapper);
+    this.functionalWrapper.append(
+      this.SearchNote.getTag(),
+      this.nightModeBtn.getTag(),
+    );
   }
 
   // eventHandler(event) {

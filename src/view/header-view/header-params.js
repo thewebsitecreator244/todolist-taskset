@@ -11,7 +11,6 @@ const headerParams = {
     "dark:border-[#ffffff]",
     "items-center",
     "md:p-3",
-    "relative",
   ],
 };
 const nightModeButtonParams = {
@@ -47,10 +46,14 @@ const logotypeParams = {
     "md:max-w-50",
   ],
 };
+const functionalWrapperParams = {
+  tagName: "div",
+  classList: ["flex", "gap-5"],
+  attributes: {},
+};
 const searchNoteParams = {
   tagName: "input",
   classList: [
-    "absolute",
     "right-20",
     "outline-none",
     "focus:shadow-xl",
@@ -59,6 +62,8 @@ const searchNoteParams = {
     "dark:border-[#ffffff]",
     "dark:placeholder-white",
     "dark:text-white",
+    "dark:focus:shadow-white",
+    "dark:focus:shadow-md",
   ],
   attributes: { name: "Search", placeholder: "Search Notes:", type: "text" },
 };
@@ -68,4 +73,5 @@ export {
   nightModeButtonParams,
   logotypeParams,
   searchNoteParams,
+  functionalWrapperParams,
 };
