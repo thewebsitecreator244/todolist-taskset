@@ -8,8 +8,6 @@ import {
   noteWrapperParams,
   btnWrapperParams,
   favBtnParams,
-  FavWrapperParams,
-  FakeParams,
   changeBtnParams,
   deleteBtnParams,
 } from "./note-list-params";
@@ -32,8 +30,6 @@ export class NoteListView {
       const btnWrapper = new Creator(btnWrapperParams).getTag();
       const changeBtn = new Creator(changeBtnParams).getTag();
       const deleteBtn = new Creator(deleteBtnParams).getTag();
-      const favWrapper = new Creator(FavWrapperParams).getTag();
-      const fake = new Creator(FakeParams).getTag();
       const favBtn = new Creator(favBtnParams).getTag();
       noteNameParams.text = note.title;
       noteTextParams.text = note.textArea;
@@ -44,8 +40,7 @@ export class NoteListView {
       li.append(noteContainer);
       noteContainer.append(noteWrapper);
       noteWrapper.append(noteName, btnWrapper);
-      btnWrapper.append(changeBtn, deleteBtn, favWrapper);
-      favWrapper.append(favBtn, fake);
+      btnWrapper.append(changeBtn, deleteBtn, favBtn);
       noteContainer.append(noteText);
     });
   }

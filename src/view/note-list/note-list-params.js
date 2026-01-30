@@ -55,20 +55,20 @@ const deleteBtnParams = {
   classList: ["deleteBtn"],
   attributes: { type: "button", "data-delete": "" },
 };
-const FavWrapperParams = {
-  tagName: "label",
-  classList: ["favWrapper"],
-  attributes: {},
-};
-const FakeParams = {
-  tagName: "div",
-  classList: ["fake"],
-  attributes: {},
-};
+
 const favBtnParams = {
-  tagName: "input",
-  classList: ["favBtn"],
-  attributes: { type: "checkbox", name: "favBtn" },
+  tagName: "button",
+  classList: [
+    "w-5",
+    "h-5",
+    "bg-[url(/fav.svg)]",
+    "dark:bg-[url(/fav-dark.svg)]",
+    "bg-no-repeat",
+    "bg-center",
+    "bg-cover",
+    "hover:cursor-pointer",
+  ],
+  attributes: { type: "button", "data-fav": "" },
 };
 
 const noteTextParams = {
@@ -86,8 +86,6 @@ export {
   noteWrapperParams,
   btnWrapperParams,
   favBtnParams,
-  FavWrapperParams,
-  FakeParams,
   changeBtnParams,
   deleteBtnParams,
 };
