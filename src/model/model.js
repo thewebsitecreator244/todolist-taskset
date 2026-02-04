@@ -26,13 +26,13 @@ export class Model {
       title: formData.get("Title"),
       favBtn: formData.get("favBtn"),
       textArea: formData.get("textArea"),
-      //1.depending on the value of favbtn the object gets pushed to a certain list so we need to create data attributes in here
-      //2.indexes take from structure
-      attribute: length(this.structure),
+      id: null,
     };
     if (object.favBtn) {
+      object.id = `favorite-${this.structure.favorite.length}`;
       this.structure.favorite.push(object);
     } else {
+      object.id = `normal-${this.structure.normal.length}`;
       this.structure.normal.push(object);
     }
     this.addData(this.key, this.structure);
