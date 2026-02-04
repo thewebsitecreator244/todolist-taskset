@@ -40,12 +40,7 @@ class Controller {
       const listName = noteData[0];
       const index = noteData[1];
       const deletedNote = this.model.deleteNote(listName, index);
-      if (listName === "favorite") {
-        this.model.structure.normal.push(deletedNote);
-      } else {
-        this.model.structure.favorite.push(deletedNote);
-      }
-
+      this.model.move(deletedNote, listName);
       this.model.addData(this.model.key, this.model.structure);
       this.renderNotes();
     }

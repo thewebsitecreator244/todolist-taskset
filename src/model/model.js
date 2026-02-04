@@ -42,4 +42,16 @@ export class Model {
     const deletedNote = this.structure[listName].pop(index);
     return deletedNote;
   }
+  move(deletedNote, listName) {
+    if (listName == "favorite") {
+      deletedNote.id = `normal-${this.structure.normal.length}`;
+      deletedNote.favBtn = null;
+      this.structure.normal.push(deletedNote);
+    }
+    if (listName == "normal") {
+      deletedNote.id = `favorite-${this.structure.favorite.length}`;
+      deletedNote.favBtn = "on";
+      this.structure.favorite.push(deletedNote);
+    }
+  }
 }
