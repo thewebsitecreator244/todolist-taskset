@@ -19,6 +19,28 @@ export class NoteListView {
   fillLoop(arrayNotes) {
     arrayNotes.forEach((note) => {
       liParams.attributes["data-index"] = note.id;
+      if (note.favBtn == "on") {
+        favBtnParams.classList = [
+          "w-5",
+          "h-5",
+          "bg-[url(/fav-checked.svg)]",
+          "bg-no-repeat",
+          "bg-center",
+          "bg-cover",
+          "hover:cursor-pointer",
+        ];
+      } else {
+        favBtnParams.classList = [
+          "w-5",
+          "h-5",
+          "bg-[url(/fav.svg)]",
+          "dark:bg-[url(/fav-dark.svg)]",
+          "bg-no-repeat",
+          "bg-center",
+          "bg-cover",
+          "hover:cursor-pointer",
+        ];
+      }
       const li = new Creator(liParams).getTag();
       const noteContainer = new Creator(noteContainerParams).getTag();
       const noteWrapper = new Creator(noteWrapperParams).getTag();
