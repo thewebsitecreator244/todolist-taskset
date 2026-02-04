@@ -22,6 +22,7 @@ class Controller {
     const isNightModeBtn = event.target.closest("#nightModeBtn");
     const isButton = event.target.closest("#noteBtn");
     const isDelete = event.target.closest("[data-delete]");
+    const isFav = event.target.closest("[data-fav]");
 
     if (isDelete) {
       const noteToDelete = isDelete.closest("[data-index]");
@@ -29,6 +30,23 @@ class Controller {
       const listName = noteData[0];
       const index = noteData[1];
       this.model.deleteNote(listName, index);
+      this.model.addData(this.model.key, this.model.structure);
+      this.renderNotes();
+    }
+
+    if (isFav) {
+      const noteToDelete = isFav.closest("[data-index]");
+      const noteData = noteToDelete.getAttribute("data-index").split("-");
+      const listName = noteData[0];
+      const index = noteData[1];
+      const deletedNote = this.model.deleteNote(listName, index);
+      if (listName === "favorite") {
+        this.model.structure.normal.push(deletedNote);
+      } else {
+        this.model.structure.favorite.push(deletedNote);
+      }
+
+      this.model.addData(this.model.key, this.model.structure);
       this.renderNotes();
     }
 

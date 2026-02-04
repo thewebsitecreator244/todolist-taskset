@@ -26,6 +26,9 @@ export class Model {
       title: formData.get("Title"),
       favBtn: formData.get("favBtn"),
       textArea: formData.get("textArea"),
+      //1.depending on the value of favbtn the object gets pushed to a certain list so we need to create data attributes in here
+      //2.indexes take from structure
+      attribute: length(this.structure),
     };
     if (object.favBtn) {
       this.structure.favorite.push(object);
@@ -36,7 +39,7 @@ export class Model {
   }
 
   deleteNote(listName, index) {
-    this.structure[listName].pop(index);
-    this.addData(this.key, this.structure);
+    const deletedNote = this.structure[listName].pop(index);
+    return deletedNote;
   }
 }
