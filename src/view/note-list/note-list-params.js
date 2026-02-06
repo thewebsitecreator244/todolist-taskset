@@ -48,7 +48,7 @@ const btnWrapperParams = {
 const changeBtnParams = {
   tagName: "button",
   classList: ["changeBtn"],
-  attributes: { type: "button" },
+  attributes: { type: "button", "data-edit": "" },
 };
 const deleteBtnParams = {
   tagName: "button",
@@ -58,16 +58,7 @@ const deleteBtnParams = {
 
 const favBtnParams = {
   tagName: "button",
-  classList: [
-    "w-5",
-    "h-5",
-    "bg-[url(/fav.svg)]",
-    "dark:bg-[url(/fav-dark.svg)]",
-    "bg-no-repeat",
-    "bg-center",
-    "bg-cover",
-    "hover:cursor-pointer",
-  ],
+  classList: [],
   attributes: { type: "button", "data-fav": "" },
 };
 

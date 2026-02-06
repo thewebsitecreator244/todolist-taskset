@@ -23,6 +23,30 @@ class Controller {
     const isButton = event.target.closest("#noteBtn");
     const isDelete = event.target.closest("[data-delete]");
     const isFav = event.target.closest("[data-fav]");
+    const isEdit = event.target.closest("[data-edit]");
+
+    if (isEdit) {
+      const noteToEdit = isEdit.closest("[data-index]");
+      const noteData = noteToEdit.getAttribute("data-index").split("-");
+      const listName = noteData[0];
+      const index = noteData[1];
+      const note = this.model.edit(listName, index);
+      const main = this.view.main.main;
+      const form = this.view.formView.buildForm(note);
+      main.append(form.FormElement, form.FadeElement);
+      form.FormElement.addEventListener("submit", (event) => {
+        event.preventDefault();
+        this.model.checkFormData(event.target);
+        this.view.formView.delete();
+        this.renderNotes();
+      });
+      form.FormElement.addEventListener("click", (event) => {
+        const isCancel = event.target.closest("#cancelBtn");
+        if (isCancel) {
+          this.view.formView.delete();
+        }
+      });
+    }
 
     if (isDelete) {
       const noteToDelete = isDelete.closest("[data-index]");

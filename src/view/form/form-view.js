@@ -18,7 +18,14 @@ export class FormView {
     this.formElement = null;
     this.fadeElement = null;
   }
-  buildForm() {
+  buildForm(editNote = {}) {
+    if (editNote.title) {
+      textInputParams.text = editNote.title;
+    }
+    if (editNote.textArea) {
+      textAreaParams.text = editNote.textArea;
+    }
+
     const fade = new Creator(fadeParams).getTag();
     const form = new Creator(formParams).getTag();
     const inputWrapper = new Creator(inputWrapperParams).getTag();

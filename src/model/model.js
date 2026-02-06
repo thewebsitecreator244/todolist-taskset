@@ -54,4 +54,8 @@ export class Model {
       this.structure.favorite.push(deletedNote);
     }
   }
+
+  edit(listName, index) {
+    return this.structure[listName][index];
+  }
 }
