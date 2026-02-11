@@ -20,7 +20,7 @@ export class FormView {
   }
   buildForm(editNote = {}) {
     if (editNote.title) {
-      textInputParams.text = editNote.title;
+      textInputParams.attributes.value = editNote.title;
     }
     if (editNote.textArea) {
       textAreaParams.text = editNote.textArea;

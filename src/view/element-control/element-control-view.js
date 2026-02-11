@@ -11,7 +11,6 @@ export class MainView {
 
     this.noteList = new NoteListView();
     this.filter = new FilterView();
-    console.log(this.filter);
 
     this.mainConstructor();
   }

@@ -23,8 +23,7 @@ const inputWrapperParams = {
 const textInputParams = {
   tagName: "input",
   classList: ["max-w-190", "w-full", "outline-none", "focus:shadow-xl"],
-  attributes: { name: "Title", placeholder: "Note title" },
-  text: "",
+  attributes: { name: "Title", placeholder: "Note title", value: "" },
 };
 const FavWrapperParams = {
   tagName: "label",
@@ -58,7 +57,6 @@ const postWrapperParams = {
   tagName: "div",
   classList: ["flex", "items-center", "gap-4"],
   attributes: {},
-  text: "",
 };
 const submitBtnParams = {
   tagName: "button",
