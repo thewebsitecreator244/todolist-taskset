@@ -24,6 +24,15 @@ export class FormView {
     }
     if (editNote.textArea) {
       textAreaParams.text = editNote.textArea;
+    } else {
+      textInputParams.attributes.value = "";
+      textAreaParams.text = "";
+    }
+
+    if (editNote.id) {
+      formParams.attributes.id = editNote.id;
+    } else {
+      formParams.attributes.id = "";
     }
 
     const fade = new Creator(fadeParams).getTag();

@@ -27,7 +27,21 @@ export class Model {
       favBtn: formData.get("favBtn"),
       textArea: formData.get("textArea"),
       id: null,
+      isEdited: false,
     };
+    if (form.id) {
+      const noteData = form.id.split("-");
+      const listName = noteData[0];
+      const index = noteData[1];
+      if (
+        object.title != this.structure[listName][index].title ||
+        object.textArea != this.structure[listName][index].textArea ||
+        object.favBtn != this.structure[listName][index].favBtn
+      ) {
+        object.isEdited = true;
+        this.structure[listName][index] = object;
+      }
+    }
     if (object.favBtn) {
       object.id = `favorite-${this.structure.favorite.length}`;
       this.structure.favorite.push(object);

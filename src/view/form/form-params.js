@@ -12,7 +12,7 @@ const formParams = {
     "max-w-130",
     "w-full",
   ],
-  attributes: {},
+  attributes: { id: "" },
 };
 const inputWrapperParams = {
   tagName: "div",
