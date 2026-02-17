@@ -26,9 +26,10 @@ export class Model {
       title: formData.get("Title"),
       favBtn: formData.get("favBtn"),
       textArea: formData.get("textArea"),
-      id: null,
+      id: form.id,
       isEdited: false,
     };
+
     if (form.id) {
       const noteData = form.id.split("-");
       const listName = noteData[0];
@@ -39,9 +40,19 @@ export class Model {
         object.favBtn != this.structure[listName][index].favBtn
       ) {
         object.isEdited = true;
-        this.structure[listName][index] = object;
+        this.structure[listName].pop(index);
+        if (object.favBtn) {
+          object.id = `favorite-${this.structure.favorite.length}`;
+          this.structure.favorite.push(object);
+        } else {
+          object.id = `normal-${this.structure.normal.length}`;
+          this.structure.normal.push(object);
+        }
+        this.addData(this.key, this.structure);
+        return;
       }
     }
+
     if (object.favBtn) {
       object.id = `favorite-${this.structure.favorite.length}`;
       this.structure.favorite.push(object);
