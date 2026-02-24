@@ -41,15 +41,6 @@ export class Model {
       ) {
         object.isEdited = true;
         this.structure[listName].pop(index);
-        if (object.favBtn) {
-          object.id = `favorite-${this.structure.favorite.length}`;
-          this.structure.favorite.push(object);
-        } else {
-          object.id = `normal-${this.structure.normal.length}`;
-          this.structure.normal.push(object);
-        }
-        this.addData(this.key, this.structure);
-        return;
       }
     }
 

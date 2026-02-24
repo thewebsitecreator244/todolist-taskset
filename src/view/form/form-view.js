@@ -21,11 +21,9 @@ export class FormView {
   buildForm(editNote = {}) {
     if (editNote.title) {
       textInputParams.attributes.value = editNote.title;
-      console.log(editNote);
     }
     if (editNote.textArea) {
       textAreaParams.text = editNote.textArea;
-      console.log(editNote);
     } else {
       textInputParams.attributes.value = "";
       textAreaParams.text = "";
