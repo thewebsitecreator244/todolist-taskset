@@ -1,77 +1,98 @@
 export class Model {
   key = "notes";
+
   constructor() {
-    this.structure = this.getData(this.key);
+    this.notes = this.load();
   }
 
-  addData(key, data) {
-    const DataJson = JSON.stringify(data);
-    localStorage.setItem(key, DataJson);
+  // ========================
+  // Storage
+  // ========================
+
+  save() {
+    localStorage.setItem(this.key, JSON.stringify(this.notes));
   }
-  getData(key) {
-    const structure = {
-      normal: [],
-      favorite: [],
+
+  load() {
+    const data = localStorage.getItem(this.key);
+    return data ? JSON.parse(data) : [];
+  }
+
+  // ========================
+  // Create
+  // ========================
+
+  create({ title, textArea, favBtn }) {
+    const newNote = {
+      id: crypto.randomUUID(),
+      title: title || "",
+      text: textArea || "",
+      isFavorite: !!favBtn,
+      createdAt: Date.now(),
+      updatedAt: null,
     };
-    const keyIsInLocalStorage = localStorage.getItem(key);
-    if (!keyIsInLocalStorage) {
-      this.addData(key, structure);
-      return structure;
-    }
-    return JSON.parse(keyIsInLocalStorage);
-  }
-  checkFormData(form) {
-    const formData = new FormData(form);
-    const object = {
-      title: formData.get("Title"),
-      favBtn: formData.get("favBtn"),
-      textArea: formData.get("textArea"),
-      id: form.id,
-      isEdited: false,
-    };
 
-    if (form.id) {
-      const noteData = form.id.split("-");
-      const listName = noteData[0];
-      const index = noteData[1];
-      if (
-        object.title != this.structure[listName][index].title ||
-        object.textArea != this.structure[listName][index].textArea ||
-        object.favBtn != this.structure[listName][index].favBtn
-      ) {
-        object.isEdited = true;
-        this.structure[listName].pop(index);
-      }
-    }
-
-    if (object.favBtn) {
-      object.id = `favorite-${this.structure.favorite.length}`;
-      this.structure.favorite.push(object);
-    } else {
-      object.id = `normal-${this.structure.normal.length}`;
-      this.structure.normal.push(object);
-    }
-    this.addData(this.key, this.structure);
+    this.notes.push(newNote);
+    this.save();
   }
 
-  deleteNote(listName, index) {
-    const deletedNote = this.structure[listName].pop(index);
-    return deletedNote;
-  }
-  move(deletedNote, listName) {
-    if (listName == "favorite") {
-      deletedNote.id = `normal-${this.structure.normal.length}`;
-      deletedNote.favBtn = null;
-      this.structure.normal.push(deletedNote);
-    }
-    if (listName == "normal") {
-      deletedNote.id = `favorite-${this.structure.favorite.length}`;
-      deletedNote.favBtn = "on";
-      this.structure.favorite.push(deletedNote);
+  // ========================
+  // Delete
+  // ========================
+
+  delete(id) {
+    const index = this.notes.findIndex((note) => note.id === id);
+    if (index !== -1) {
+      this.notes.splice(index, 1);
+      this.save();
     }
   }
 
-  edit(listName, index) {
-    return this.structure[listName][index];
+  // ========================
+  // Update
+  // ========================
+
+  update(id, { title, textArea, favBtn }) {
+    const note = this.notes.find((n) => n.id === id);
+    if (!note) return;
+
+    note.title = title;
+    note.text = textArea;
+    note.isFavorite = !!favBtn;
+    note.updatedAt = Date.now();
+
+    this.save();
+  }
+
+  // ========================
+  // Toggle favorite
+  // ========================
+
+  toggleFavorite(id) {
+    const note = this.notes.find((n) => n.id === id);
+    if (!note) return;
+
+    note.isFavorite = !note.isFavorite;
+    this.save();
+  }
+
+  // ========================
+  // Getters
+  // ========================
+
+  getAll() {
+    return this.notes;
+  }
+
+  getFavorites() {
+    return this.notes.filter((note) => note.isFavorite);
+  }
+
+  getNormal() {
+    return this.notes.filter((note) => !note.isFavorite);
+  }
+
+  getById(id) {
+    return this.notes.find((note) => note.id === id);
   }
 }

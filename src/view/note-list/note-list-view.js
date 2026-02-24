@@ -16,10 +16,14 @@ export class NoteListView {
   constructor() {
     this.list = new Creator(noteListParams);
   }
+
   fillLoop(arrayNotes) {
     arrayNotes.forEach((note) => {
-      liParams.attributes["data-index"] = note.id;
-      if (note.favBtn == "on") {
+      // Устанавливаем стабильный id
+      liParams.attributes["data-id"] = note.id;
+
+      // Иконка избранного
+      if (note.isFavorite) {
         favBtnParams.classList = [
           "w-5",
           "h-5",
@@ -41,6 +45,7 @@ export class NoteListView {
           "hover:cursor-pointer",
         ];
       }
+
       const li = new Creator(liParams).getTag();
       const noteContainer = new Creator(noteContainerParams).getTag();
       const noteWrapper = new Creator(noteWrapperParams).getTag();
@@ -48,8 +53,10 @@ export class NoteListView {
       const changeBtn = new Creator(changeBtnParams).getTag();
       const deleteBtn = new Creator(deleteBtnParams).getTag();
       const favBtn = new Creator(favBtnParams).getTag();
+
       noteNameParams.text = note.title;
-      noteTextParams.text = note.textArea;
+      noteTextParams.text = note.text;
+
       const noteName = new Creator(noteNameParams).getTag();
       const noteText = new Creator(noteTextParams).getTag();
 
@@ -61,6 +68,7 @@ export class NoteListView {
       noteContainer.append(noteText);
     });
   }
+
   deleteOld() {
     this.list.getTag().innerHTML = "";
   }

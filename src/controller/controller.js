@@ -5,99 +5,123 @@ class Controller {
   constructor() {
     this.model = new Model();
     this.view = new View();
+
     this.setListeners();
-    this.renderNotes();
+    this.render();
   }
 
+  // ========================
+  // Основные слушатели
+  // ========================
   setListeners() {
     const main = this.view.main.main;
-    main.addEventListener("click", (event) => this.eventHandler(event));
 
+    // Клик по всему main
+    main.addEventListener("click", (event) => this.handleClick(event));
+
+    // Кнопки в header
     this.view.headerView.header
       .getTag()
-      .addEventListener("click", (event) => this.eventHandler(event));
+      .addEventListener("click", (event) => this.handleClick(event));
   }
 
-  eventHandler(event) {
-    const isNightModeBtn = event.target.closest("#nightModeBtn");
-    const isButton = event.target.closest("#noteBtn");
-    const isDelete = event.target.closest("[data-delete]");
-    const isFav = event.target.closest("[data-fav]");
-    const isEdit = event.target.closest("[data-edit]");
+  // ========================
+  // Обработчик кликов
+  // ========================
+  handleClick(event) {
+    const createBtn = event.target.closest("#noteBtn");
+    const deleteBtn = event.target.closest("[data-delete]");
+    const favBtn = event.target.closest("[data-fav]");
+    const editBtn = event.target.closest("[data-edit]");
+    const nightBtn = event.target.closest("#nightModeBtn");
 
-    if (isEdit) {
-      const noteToEdit = isEdit.closest("[data-index]");
-      const noteData = noteToEdit.getAttribute("data-index").split("-");
-      const listName = noteData[0];
-      const index = noteData[1];
-      const note = this.model.edit(listName, index);
-      const main = this.view.main.main;
-      const form = this.view.formView.buildForm(note);
-
-      main.append(form.FormElement, form.FadeElement);
-
-      form.FormElement.addEventListener("submit", (event) => {
-        event.preventDefault();
-        this.model.checkFormData(event.target);
-        this.view.formView.delete();
-        this.renderNotes();
-      });
-
-      form.FormElement.addEventListener("click", (event) => {
-        const isCancel = event.target.closest("#cancelBtn");
-        if (isCancel) {
-          this.view.formView.delete();
-        }
-      });
-    }
-
-    if (isDelete) {
-      const noteToDelete = isDelete.closest("[data-index]");
-      const noteData = noteToDelete.getAttribute("data-index").split("-");
-      const listName = noteData[0];
-      const index = noteData[1];
-      this.model.deleteNote(listName, index);
-      this.model.addData(this.model.key, this.model.structure);
-      this.renderNotes();
-    }
-
-    if (isFav) {
-      const noteToDelete = isFav.closest("[data-index]");
-      const noteData = noteToDelete.getAttribute("data-index").split("-");
-      const listName = noteData[0];
-      const index = noteData[1];
-      const deletedNote = this.model.deleteNote(listName, index);
-      this.model.move(deletedNote, listName);
-      this.model.addData(this.model.key, this.model.structure);
-      this.renderNotes();
-    }
-
-    if (isNightModeBtn) {
+    if (nightBtn) {
       this.view.headerView.nightMode();
+      return;
     }
 
-    if (isButton) {
-      const main = this.view.main.main;
-      const form = this.view.formView.buildForm();
-      main.append(form.FormElement, form.FadeElement);
-      form.FormElement.addEventListener("submit", (event) => {
-        event.preventDefault();
-        this.model.checkFormData(event.target);
-        this.view.formView.delete();
-        this.renderNotes();
-      });
-      form.FormElement.addEventListener("click", (event) => {
-        const isCancel = event.target.closest("#cancelBtn");
-        if (isCancel) {
-          this.view.formView.delete();
-        }
-      });
+    if (createBtn) {
+      this.openForm();
+      return;
+    }
+
+    if (deleteBtn) {
+      const noteElement = deleteBtn.closest("[data-id]");
+      const id = noteElement.dataset.id;
+
+      this.model.delete(id);
+      this.render();
+      return;
+    }
+
+    if (favBtn) {
+      const noteElement = favBtn.closest("[data-id]");
+      const id = noteElement.dataset.id;
+
+      this.model.toggleFavorite(id);
+      this.render();
+      return;
+    }
+
+    if (editBtn) {
+      const noteElement = editBtn.closest("[data-id]");
+      const id = noteElement.dataset.id;
+
+      const note = this.model.getById(id);
+      this.openForm(note);
+      return;
     }
   }
-  renderNotes() {
+
+  // ========================
+  // Работа с формой
+  // ========================
+  openForm(note = null) {
+    const main = this.view.main.main;
+    const form = this.view.formView.buildForm(note);
+
+    main.append(form.FormElement, form.FadeElement);
+
+    form.FormElement.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      const data = {
+        title: formData.get("Title"),
+        textArea: formData.get("textArea"),
+        favBtn: formData.get("favBtn"),
+      };
+
+      if (note) {
+        this.model.update(note.id, data);
+      } else {
+        this.model.create(data);
+      }
+
+      this.view.formView.delete();
+      this.render();
+    });
+
+    form.FormElement.addEventListener("click", (event) => {
+      const cancelBtn = event.target.closest("#cancelBtn");
+      if (cancelBtn) {
+        this.view.formView.delete();
+      }
+    });
+  }
+
+  // ========================
+  // Рендер заметок
+  // ========================
+  render() {
     this.view.main.noteList.deleteOld();
-    this.view.main.noteList.fillLoop(this.model.structure.normal);
-    this.view.main.noteList.fillLoop(this.model.structure.favorite);
+
+    const normal = this.model.getNormal();
+    const favorites = this.model.getFavorites();
+
+    // Можно сначала избранные, потом обычные
+    this.view.main.noteList.fillLoop(favorites);
+    this.view.main.noteList.fillLoop(normal);
   }
 }
 
