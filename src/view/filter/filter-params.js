@@ -19,7 +19,7 @@ const normalParams = {
     "duration-300",
     "max-w-xs",
   ],
-  attributes: {},
+  attributes: { "data-normal": "" },
   text: "Normal",
 };
 const favParams = {
@@ -37,7 +37,7 @@ const favParams = {
     "duration-300",
     "max-w-xs",
   ],
-  attributes: {},
+  attributes: { "data-favorite": "" },
   text: "Favorite",
 };
 export { filterWrapperParams, normalParams, favParams };

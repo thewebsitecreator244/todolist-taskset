@@ -25,16 +25,25 @@ class Controller {
       .addEventListener("click", (event) => this.handleClick(event));
   }
 
-  // ========================
-  // Обработчик кликов
-  // ========================
   handleClick(event) {
     const createBtn = event.target.closest("#noteBtn");
     const deleteBtn = event.target.closest("[data-delete]");
     const favBtn = event.target.closest("[data-fav]");
     const editBtn = event.target.closest("[data-edit]");
     const nightBtn = event.target.closest("#nightModeBtn");
+    const filterNormal = event.target.closest("[data-normal]");
+    const filterFav = event.target.closest("[data-favorite]");
 
+    if (filterNormal) {
+      this.view.main.noteList.deleteOld();
+      const filteredList = this.model.getNormal();
+      this.view.main.noteList.fillLoop(filteredList);
+    }
+    if (filterFav) {
+      this.view.main.noteList.deleteOld();
+      const filteredList = this.model.getFavorites();
+      this.view.main.noteList.fillLoop(filteredList);
+    }
     if (nightBtn) {
       this.view.headerView.nightMode();
       return;

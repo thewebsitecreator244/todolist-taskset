@@ -19,10 +19,8 @@ export class NoteListView {
 
   fillLoop(arrayNotes) {
     arrayNotes.forEach((note) => {
-      // Устанавливаем стабильный id
       liParams.attributes["data-id"] = note.id;
 
-      // Иконка избранного
       if (note.isFavorite) {
         favBtnParams.classList = [
           "w-5",
