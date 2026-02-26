@@ -53,9 +53,14 @@ export class NoteListView {
       const changeBtn = new Creator(changeBtnParams).getTag();
       const deleteBtn = new Creator(deleteBtnParams).getTag();
       const favBtn = new Creator(favBtnParams).getTag();
-
       noteNameParams.text = note.title;
       noteTextParams.text = note.text;
+      if (noteNameParams.text == "") {
+        noteNameParams.text = "No Title";
+      }
+      if (noteTextParams.text == "") {
+        noteTextParams.text = "No description";
+      }
 
       const noteName = new Creator(noteNameParams).getTag();
       const noteText = new Creator(noteTextParams).getTag();

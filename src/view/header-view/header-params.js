@@ -7,10 +7,12 @@ const headerParams = {
     "py-1",
     "px-2",
     "flex",
+    "flex-col",
     "justify-between",
     "dark:border-[#ffffff]",
     "items-center",
     "md:p-3",
+    "md:flex-row",
   ],
 };
 const nightModeButtonParams = {

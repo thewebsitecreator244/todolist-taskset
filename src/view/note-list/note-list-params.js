@@ -7,6 +7,8 @@ const noteListParams = {
     "gap-2",
     "flex-col",
     "items-center",
+    "px-5",
+    "md:px-0",
   ],
   attributes: {},
 };
@@ -36,7 +38,7 @@ const noteWrapperParams = {
 };
 const noteNameParams = {
   tagName: "h3",
-  classList: ["font-medium", "dark:text-white"],
+  classList: ["font-medium", "dark:text-white", "truncate", "max-w-lg"],
   attributes: {},
   text: "",
 };
@@ -64,7 +66,7 @@ const favBtnParams = {
 
 const noteTextParams = {
   tagName: "p",
-  classList: ["text-gray-500"],
+  classList: ["text-gray-500", "truncate", "max-w-lg"],
   attributes: {},
   text: "",
 };
