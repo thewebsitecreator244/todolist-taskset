@@ -75,4 +75,16 @@ export class NoteListView {
   deleteOld() {
     this.list.getTag().innerHTML = "";
   }
+
+  search(text) {
+    const notes = this.list.getTag().querySelectorAll("[data-index]");
+    notes.forEach((note) => {
+      const title = note.querySelector("h3");
+      if (title.innerText.toLowerCase() !== text.toLowerCase()) {
+        note.style.display = "none";
+      } else {
+        note.style.display = "block";
+      }
+    });
+  }
 }

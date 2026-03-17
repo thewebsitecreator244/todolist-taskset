@@ -5,10 +5,6 @@ export class Model {
     this.notes = this.load();
   }
 
-  // ========================
-  // Storage
-  // ========================
-
   save() {
     localStorage.setItem(this.key, JSON.stringify(this.notes));
   }
@@ -17,10 +13,6 @@ export class Model {
     const data = localStorage.getItem(this.key);
     return data ? JSON.parse(data) : [];
   }
-
-  // ========================
-  // Create
-  // ========================
 
   create({ title, textArea, favBtn }) {
     const newNote = {
@@ -36,10 +28,6 @@ export class Model {
     this.save();
   }
 
-  // ========================
-  // Delete
-  // ========================
-
   delete(id) {
     const index = this.notes.findIndex((note) => note.id === id);
     if (index !== -1) {
@@ -47,10 +35,6 @@ export class Model {
       this.save();
     }
   }
-
-  // ========================
-  // Update
-  // ========================
 
   update(id, { title, textArea, favBtn }) {
     const note = this.notes.find((n) => n.id === id);
@@ -64,10 +48,6 @@ export class Model {
     this.save();
   }
 
-  // ========================
-  // Toggle favorite
-  // ========================
-
   toggleFavorite(id) {
     const note = this.notes.find((n) => n.id === id);
     if (!note) return;
@@ -75,10 +55,6 @@ export class Model {
     note.isFavorite = !note.isFavorite;
     this.save();
   }
-
-  // ========================
-  // Getters
-  // ========================
 
   getAll() {
     return this.notes;

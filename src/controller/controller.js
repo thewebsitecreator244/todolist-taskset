@@ -10,19 +10,21 @@ class Controller {
     this.render();
   }
 
-  // ========================
-  // Основные слушатели
-  // ========================
   setListeners() {
     const main = this.view.main.main;
 
-    // Клик по всему main
     main.addEventListener("click", (event) => this.handleClick(event));
 
-    // Кнопки в header
     this.view.headerView.header
       .getTag()
       .addEventListener("click", (event) => this.handleClick(event));
+
+    this.view.headerView.SearchNote.getTag().addEventListener(
+      "input",
+      (event) => {
+        this.view.main.noteList.search(event.target.value);
+      },
+    );
   }
 
   handleClick(event) {
@@ -82,9 +84,6 @@ class Controller {
     }
   }
 
-  // ========================
-  // Работа с формой
-  // ========================
   openForm(note = null) {
     const main = this.view.main.main;
     const form = this.view.formView.buildForm(note);
@@ -119,16 +118,12 @@ class Controller {
     });
   }
 
-  // ========================
-  // Рендер заметок
-  // ========================
   render() {
     this.view.main.noteList.deleteOld();
 
     const normal = this.model.getNormal();
     const favorites = this.model.getFavorites();
 
-    // Можно сначала избранные, потом обычные
     this.view.main.noteList.fillLoop(favorites);
     this.view.main.noteList.fillLoop(normal);
   }
