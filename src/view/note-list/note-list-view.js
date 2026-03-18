@@ -80,7 +80,7 @@ export class NoteListView {
     const notes = this.list.getTag().querySelectorAll("[data-index]");
     notes.forEach((note) => {
       const title = note.querySelector("h3");
-      if (title.innerText.toLowerCase() !== text.toLowerCase()) {
+      if (!title.innerText.toLowerCase().includes(text.toLowerCase())) {
         note.style.display = "none";
       } else {
         note.style.display = "block";

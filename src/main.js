@@ -1,2 +1,4 @@
 import "./style.css";
-import "./controller/controller.js";
+import { Controller } from "./controller/controller";
+
+new Controller();

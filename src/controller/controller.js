@@ -1,7 +1,7 @@
 import { Model } from "../model/model";
 import { View } from "../view/view";
 
-class Controller {
+export class Controller {
   constructor() {
     this.model = new Model();
     this.view = new View();
@@ -128,5 +128,3 @@ class Controller {
     this.view.main.noteList.fillLoop(normal);
   }
 }
-
-new Controller();
